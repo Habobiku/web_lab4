@@ -86,7 +86,7 @@
 
                         </li>
                     </ul>
-                    <img src="images/b1.png" width="75%" class="block">
+                    <img src="images/b1.jpg" width="75%" class="block">
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias mollitia porro esse iusto.
                         Corrupti perferendis dignissimos esse aperiam ad. Ut distinctio molestiae optio aliquam est
@@ -142,16 +142,8 @@
     </main>
 </div>
 <script>
-    var DbData=[];
-window.onload = function () {
-    const data = fetch("./info").then(data => data.json())
-    console.log(data)
-    DbData[0]=data.square_speed;
-    DbData[1]=data.img;
-    var square_speed=prompt('Введите скорость квадрата')
-
-
-};
+  
+var square_speed=prompt('Введите скорость квадрата')
 var playButton = document.getElementById('playButton');
 playButton.addEventListener('click', function(e){
     var work = document.getElementById('work');
@@ -168,7 +160,7 @@ closeButton.addEventListener('click', function(e){
 });
 
 
-var canvas = document.getElementById('anim');
+var canvas = document.getElementById('anim');    
 canvas.width = 500;
 canvas.height = 500;
 var context = canvas.getContext("2d");
@@ -189,7 +181,7 @@ var square = {
     height: 0,
     xdir: 0,
     ydir: 0,
-    speed: 0
+    speed: 0      
 };
 
 //Initializing the square
@@ -204,7 +196,7 @@ if(square_speed==null||square_speed=="")
 }
 else
 {
-    square.speed = DbData[0];
+square.speed = square_speed;
 }
 //Enter the main loop
 
@@ -245,7 +237,7 @@ function main() {
         update();
         render();
     }
-
+    
 }
 function stop() {
     context.fillStyle = "orange";
@@ -253,78 +245,79 @@ function stop() {
     window.cancelAnimationFrame(requestId);
     requestId = undefined;
 }
-function update(){
+  function update(){
     dt = 0.016;
-
+    
     //Move the square
     square.x += dt * square.speed * square.xdir;
     square.y += dt * square.speed * square.ydir;
-
+    
     //Handle left and right collissions with the level
     if (square.x <= level.x){
-        //left edge
-        square.xdir = 1;
-        square.x = level.x;
-        stop();
-        startButton.style.display = 'none';
-        stopButton.style.display = 'none';
-        reloadButton.style.display = 'block';
+      //left edge
+      square.xdir = 1;
+      square.x = level.x;
+      stop();
+      startButton.style.display = 'none';
+      stopButton.style.display = 'none';
+      reloadButton.style.display = 'block';
     } else if (square.x + square.width >= level.x + level.width + 20){
-        square.xdir = -1;
-        square.x = level.x + level.width - square.width + 20;
-        addDataToUl("hit right edge");
+      square.xdir = -1;
+      square.x = level.x + level.width - square.width + 20;
+      addDataToUl("hit right edge");
     }
-
+    
     //Handle top and bottom collisiosns with the level
     if (square.y <= level.y){
-        //Top edge
-        square.ydir = 1;
-        square.y = level.y;
+      //Top edge
+      square.ydir = 1;
+      square.y = level.y;
     } else if (square.y + square.height >= level.y + level.height){
-        square.ydir = -1;
-        square.y = level.y + level.height - square.height
+      square.ydir = -1;
+      square.y = level.y + level.height - square.height
     }
-
-}
-
-function render(){
+    
+  }
+  
+  function render(){
     //Draw that shit
     drawFrame();
     //Drawing the square
     context.fillStyle = "orange";
     context.fillRect(square.x, square.y, square.width, square.height);
-}
-
-//Function to draw everything
-function drawFrame(){
+  }
+  
+  //Function to draw everything
+  function drawFrame(){
     //Draw background and border
     var blueprint_background = new Image();
-    blueprint_background.src ="images/b1.jpg "
+    blueprint_background.style.width='1000px'
+    blueprint_background.src = "https://thumbs.dreamstime.com/z/пиксель-арт-банан-иконка-векторный-рисунок-банановый-значок-179923290.jpg" ; 
     blueprint_background.onload = function(){
         var pattern = context.createPattern(this, "repeat");
         context.fillStyle = pattern;
         context.fillRect(0, 0, canvas.width, canvas.height);
     };
-
-
-}
-function addDataToUl(element){
+    
+      
+  }
+  function addDataToUl(element){
     ul = document.getElementById('operations');
     var li = document.createElement('li');
     li.setAttribute('class','item');
 
     ul.appendChild(li);
-    currentdate = new Date();
+    currentdate = new Date(); 
     var datetime = "[" + currentdate.getDate() + "-"
-        + (currentdate.getMonth()+1)  + "-"
-        + currentdate.getFullYear() + "-"
-        + currentdate.getHours() + ":"
-        + currentdate.getMinutes() + ":"
-        + currentdate.getSeconds()+"]";
+            + (currentdate.getMonth()+1)  + "-" 
+            + currentdate.getFullYear() + "-"  
+            + currentdate.getHours() + ":"  
+            + currentdate.getMinutes() + ":" 
+            + currentdate.getSeconds()+"]";
     li.innerHTML += datetime + " " + element;
     localStorage.setItem(datetime,element);
-}
-
+  }
+alert
 </script>
 
 </body>
