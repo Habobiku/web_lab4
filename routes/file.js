@@ -180,4 +180,3 @@ function addDataToUl(element){
     li.innerHTML += datetime + " " + element;
     localStorage.setItem(datetime,element);
 }
-alert
