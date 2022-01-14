@@ -1,4 +1,19 @@
-var square_speed=prompt('Введите скорость квадрата')
+var dbData=[];
+     window.onload = async function () {
+        var square_speed=prompt('Введите скорость квадрата')
+
+            const data = await fetch("./info").then(data => data.json())
+            console.log(data)
+            data.forEach((elem) => {
+              dbData[0]=elem.img 
+              dbData[1]=elem.square_speed
+            }
+            )
+
+        };
+        
+    
+
 var playButton = document.getElementById('playButton');
 playButton.addEventListener('click', function(e){
     var work = document.getElementById('work');
@@ -47,7 +62,7 @@ square.y = level.y + (level.height - square.height) / 2;
 square.xdir = 1;
 square.ydir = 1;
 if(square_speed==null||square_speed=="")
-{square.speed=15;
+{square.speed=dbData[1];
 }
 else
 {
@@ -147,7 +162,7 @@ function stop() {
     //Draw background and border
     var blueprint_background = new Image();
     blueprint_background.style.width='1000px'
-    blueprint_background.src = "https://thumbs.dreamstime.com/z/пиксель-арт-банан-иконка-векторный-рисунок-банановый-значок-179923290.jpg" ; 
+    blueprint_background.src = dbData[0] ; 
     blueprint_background.onload = function(){
         var pattern = context.createPattern(this, "repeat");
         context.fillStyle = pattern;
@@ -172,4 +187,3 @@ function stop() {
     li.innerHTML += datetime + " " + element;
     localStorage.setItem(datetime,element);
   }
-alert

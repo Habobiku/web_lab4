@@ -143,7 +143,7 @@
 </div>
 
 <script>
-    var dbData=[];
+  var dbData=[];
      window.onload = async function () {
         var square_speed=prompt('Введите скорость квадрата')
 
@@ -155,10 +155,7 @@
             }
             )
 
-        };
-        
-    
-
+        };  
 var playButton = document.getElementById('playButton');
 playButton.addEventListener('click', function(e){
     var work = document.getElementById('work');
@@ -307,7 +304,7 @@ function stop() {
     //Draw background and border
     var blueprint_background = new Image();
     blueprint_background.style.width='1000px'
-    blueprint_background.src = dbData[0] ; 
+    blueprint_background.src = "https://thumbs.dreamstime.com/z/пиксель-арт-банан-иконка-векторный-рисунок-банановый-значок-179923290.jpg" ; 
     blueprint_background.onload = function(){
         var pattern = context.createPattern(this, "repeat");
         context.fillStyle = pattern;
