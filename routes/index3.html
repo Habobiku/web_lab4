@@ -143,6 +143,16 @@
 </div>
 
 <script>
+     window.onload = function () {
+            const data = fetch("./info").then(data => data.json())
+            console.log(data)
+            data.forEach((elem) => {
+               
+            }
+            )
+
+        };
+
     var square_speed=prompt('Введите скорость квадрата')
 var playButton = document.getElementById('playButton');
 playButton.addEventListener('click', function(e){
