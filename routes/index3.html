@@ -150,12 +150,19 @@
             console.log(data)
             data.forEach((elem) => {
               dbData[0]=elem.img 
+              
               dbData[1]=Number(elem.square_speed)
             }
             )
+            if(square_speed==null||square_speed=="")
+            {
+                square_speed=dbData[1]
+
+            }
+
 
         };  
-        var square_speed=prompt('Введите скорость квадрата')
+        var initsquare_speed=prompt('Введите скорость квадрата')
 
 var playButton = document.getElementById('playButton');
 playButton.addEventListener('click', function(e){
@@ -204,13 +211,8 @@ square.x = level.x + (level.width - square.width) / 2;
 square.y = level.y + (level.height - square.height) / 2;
 square.xdir = 1;
 square.ydir = 1;
-if(square_speed==null||square_speed=="")
-{square.speed=15;
-}
-else
-{
-square.speed = square_speed;
-}
+square.speed = intitsquare_speed;
+
 //Enter the main loop
 
 var startButton = document.getElementById('startButton');
