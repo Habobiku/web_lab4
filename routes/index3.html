@@ -147,12 +147,13 @@
      window.onload = function () {
             const data = fetch("./info").then(data => data.json())
             console.log(data)
-            dbData[0]=data[0].img ;
-            dbData[1]=data[0].square_speed;
-            
-            
-            
+            data.forEach((elem) => {
+                
+                h1.innerHTML = elem.title;
+                p.innerHTML = elem.description;
           
+            }
+            )
 
         };
 
