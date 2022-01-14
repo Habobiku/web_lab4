@@ -144,16 +144,9 @@
 
 <script>
     var dbData=[];
-     window.onload = function () {
-            const data = fetch("./info").then(data => data.json())
+     window.onload = async function () {
+            const data = await fetch("./info").then(data => data.json())
             console.log(data)
-            data.forEach((elem) => {
-                
-                h1.innerHTML = elem.title;
-                p.innerHTML = elem.description;
-          
-            }
-            )
 
         };
 
