@@ -205,7 +205,7 @@ square.y = level.y + (level.height - square.height) / 2;
 square.xdir = 1;
 square.ydir = 1;
 if(square_speed==null||square_speed=="")
-{square.speed=15;
+{square.speed=Number(dbData[1]);
 }
 else
 {
