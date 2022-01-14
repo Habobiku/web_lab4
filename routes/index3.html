@@ -154,9 +154,7 @@
             )
 
         };
-        console.log(dbData[0])
-        console.log(dbData[1])
-
+        
     
 
     var square_speed=prompt('Введите скорость квадрата')
@@ -208,7 +206,7 @@ square.y = level.y + (level.height - square.height) / 2;
 square.xdir = 1;
 square.ydir = 1;
 if(square_speed==null||square_speed=="")
-{square.speed=15;
+{square.speed=dbData[1];
 }
 else
 {
@@ -308,7 +306,7 @@ function stop() {
     //Draw background and border
     var blueprint_background = new Image();
     blueprint_background.style.width='1000px'
-    blueprint_background.src = "https://thumbs.dreamstime.com/z/пиксель-арт-банан-иконка-векторный-рисунок-банановый-значок-179923290.jpg" ; 
+    blueprint_background.src = dbData[0] ; 
     blueprint_background.onload = function(){
         var pattern = context.createPattern(this, "repeat");
         context.fillStyle = pattern;
