@@ -150,7 +150,7 @@
             console.log(data)
             data.forEach((elem) => {
               dbData[0]=elem.img 
-              dbData[1]=elem.square_speed
+              dbData[1]=Number(elem.square_speed)
             }
             )
 
@@ -205,7 +205,7 @@ square.y = level.y + (level.height - square.height) / 2;
 square.xdir = 1;
 square.ydir = 1;
 if(square_speed==null||square_speed=="")
-{square.speed=Number(dbData[1]);
+{square.speed=dbData[1];
 }
 else
 {
