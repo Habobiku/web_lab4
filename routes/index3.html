@@ -147,8 +147,15 @@
      window.onload = async function () {
             const data = await fetch("./info").then(data => data.json())
             console.log(data)
+            data.forEach((elem) => {
+              dbData[0]=elem.img 
+              dbData[1]=elem.square_speed
+            }
+            )
 
         };
+
+    
 
     var square_speed=prompt('Введите скорость квадрата')
 var playButton = document.getElementById('playButton');
