@@ -143,9 +143,16 @@
 </div>
 
 <script>
+    var dbData=[];
      window.onload = function () {
             const data = fetch("./info").then(data => data.json())
             console.log(data)
+            data.forEach((elem) => {
+                dbData[0]=elem.img ;
+                dbData[1]=elem.square_speed;
+            
+            }
+            )
           
 
         };
