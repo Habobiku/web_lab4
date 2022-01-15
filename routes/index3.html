@@ -332,18 +332,31 @@ function stop() {
   }
   window.addEventListener("resize",Resize)
  ;
-  function Resize()
-  {
+ function Resize()
+  {var anim_css=getComputedStyle(anim)
     var procent=3;
     var px;
     var workh=getComputedStyle(work)
   console.log(workh.height)
-  var animh=parseInt(workh.height.match(/\d+/))-100;
-  var animw=Number(workh.width.match(/\d+/))-300;
+  var animh=parseInt((workh.height.match(/\d+/))*0.65)-10;
+  var animw=Number((workh.width.match(/\d+/))*0.75)-50;
      canvas.style.maxWidth=Number(workh.width.match(/\d+/))+"px"
      canvas.style.maxHeight=Number(workh.height.match(/\d+/))+"px"
-var mynum=(animh+animw)/2;
+
+    var mynum=(animh+animw)/2;
    canvas.style.width=canvas.style.height=mynum+"px";
+   if(anim_css.width!=anim_css.height)
+   {
+     if(Number(workh.width.match(/\d+/))>Number(workh.height.match(/\d+/)))
+     {
+       canvas.style.width=canvas.style.height=workh.height
+     }
+     else if(Number(workh.width.match(/\d+/))<Number(workh.height.match(/\d+/)))
+     {
+       canvas.style.width=canvas.style.height=workh.width
+     }
+    
+   }
    
     
   }
