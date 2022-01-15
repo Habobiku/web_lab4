@@ -220,6 +220,7 @@ var doAnim = true;
 var requestId;
 
 startButton.addEventListener('click', function(e){
+    Resize();
     addDataToUl("pressed start button");
     doAnim = true;
     startButton.style.display = 'none';
@@ -328,6 +329,23 @@ function stop() {
             + currentdate.getSeconds()+"]";
     li.innerHTML += datetime + " " + element;
     localStorage.setItem(datetime,element);
+  }
+  window.addEventListener("resize",Resize)
+ ;
+  function Resize()
+  {
+    var procent=3;
+    var px;
+    var workh=getComputedStyle(work)
+  console.log(workh.height)
+  var animh=parseInt(workh.height.match(/\d+/))-100;
+  var animw=Number(workh.width.match(/\d+/))-300;
+     canvas.style.maxWidth=Number(workh.width.match(/\d+/))+"px"
+     canvas.style.maxHeight=Number(workh.height.match(/\d+/))+"px"
+var mynum=(animh+animw)/2;
+   canvas.style.width=canvas.style.height=mynum+"px";
+   
+    
   }
 
 </script>
